@@ -24,12 +24,12 @@ function Login({ navigation }) {
       .then((resData) => {
         if (resData.message == "Login Success") {
           AsyncStorage.setItem('@storage_Key', email);
-          navigation.navigate("Home");
+          navigation.navigate("HomePage");
         }
       });
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -45,17 +45,21 @@ function Login({ navigation }) {
       />
 
       <View style={styles.button}>
-        <Button title="Login" onPress={onLogin} />
+        <Button title="Đăng nhập" onPress={onLogin} />
       </View>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    marginTop:50
+  },
   input: {
     height: 40,
     margin: 30,
     borderWidth: 1,
     padding: 10,
+    borderRadius: 20
   },
   button: {
     margin: 20,

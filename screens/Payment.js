@@ -13,6 +13,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { ADDRESS } from "../constants/API";
 
 function Payment({ navigation }) {
@@ -64,7 +65,7 @@ function Payment({ navigation }) {
       }),
     })
       .then(alert("Payment Success"))
-      .then(navigation.navigate("Home"));
+      .then(navigation.navigate("HomePage"));
   };
   useEffect(() => {
     getTotalCarts();
@@ -73,7 +74,7 @@ function Payment({ navigation }) {
   }, []);
 
   return (
-    <View style={{ flex: 1, padding: 24 }}>
+    <View style={{ padding: 24 }}>
       <FlatList
         data={address}
         keyExtractor={({ id }, index) => id}
@@ -81,6 +82,10 @@ function Payment({ navigation }) {
           <TouchableHighlight>
             <View style={{ flexDirection: "row" }}>
               <View>
+                <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 25 }}>
+                  <FontAwesome name="map-marker" size={24} color="#969696" />
+                  Địa chỉ đặt hàng
+                </Text>
                 <Text style={{ marginTop: 10, marginLeft: 15 }}>
                   {item.name}
                 </Text>
@@ -95,6 +100,10 @@ function Payment({ navigation }) {
           </TouchableHighlight>
         )}
       />
+      <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 25 }}>
+        <FontAwesome name="shopping-basket" size={24} color="#969696" />
+        Chi tiết đơn hàng
+      </Text>
       <FlatList
         data={data}
         keyExtractor={({ id }, index) => id}
@@ -126,9 +135,7 @@ function Payment({ navigation }) {
         )}
       />
       <View>
-        <Text style={{ marginBottom: 100, fontSize: 20 }}>
-          Tổng tiền : {total} đ
-        </Text>
+        <Text style={{ marginTop: 30, marginBottom: 100, fontSize: 25 }}>Tổng tiền : {total} đ</Text>
       </View>
       <View style={styles.fixToText}>
         <Button title="Quay lại" />

@@ -10,6 +10,7 @@ import {
   TouchableHighlight,
   SafeAreaView,
 } from "react-native";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CategoryChidren from "./screens/CategoryChildren";
@@ -20,7 +21,9 @@ import Login from "./screens/Login";
 import Cart from "./screens/Cart";
 import Payment from "./screens/Payment";
 import Address from "./screens/Address";
-
+import HomePage from "./screens/HomePage";
+import History from "./screens/History";
+import HistoryDetails from "./screens/HistoryDetails";
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -46,17 +49,26 @@ function App() {
           component={ProductDetails}
           options={({ navigation }) => ({
             headerRight: () => (
-              <Button
-                title="Cart"
-                onPress={() => navigation.navigate("Cart")}
-              />
+              <TouchableHighlight
+                onPress={() => {
+                  /* 1. Navigate to the Details route with params */
+                  navigation.navigate("Cart");
+                }}
+                underlayColor="none"
+              >
+                <FontAwesome name="shopping-cart" size={24} color="black" />
+              </TouchableHighlight>
             ),
+            
           })}
         />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Payment" component={Payment} />
         <Stack.Screen name="Address" component={Address} />
+        <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="History" component={History} />
+        <Stack.Screen name="HistoryDetails" component={HistoryDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );
