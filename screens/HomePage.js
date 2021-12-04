@@ -19,7 +19,8 @@ function Home({ navigation }) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [key, setKey] = useState("");
-  const [product,setProduct] = useState([]);
+  const [product, setProduct] = useState([]);
+
   const getCategories = async () => {
     try {
       const response = await fetch(ADDRESS + "category");
@@ -65,11 +66,26 @@ function Home({ navigation }) {
     <View style={{ flex: 1, padding: 0 }}>
       <View style={styles.headerContainer}>
         <View style={styles.inputContainer}>
-          <TouchableHighlight >
-          <FontAwesome name="search" size={24} color="#969696" />
+          <TouchableHighlight
+            onPress={() => {
+              /* 1. Navigate to the Details route with params */
+              navigation.navigate("Search", { key: key });
+            }}
+            underlayColor="none"
+          >
+            <FontAwesome
+              name="search"
+              size={24}
+              color="#969696"
+              onChangeText={(value) => setKey(value)}
+            />
           </TouchableHighlight>
-          
-          <TextInput style={styles.inputText} placeholder="Bạn tìm gì hôm nay?" onChangeText={(value) => setKey(value)}></TextInput>
+
+          <TextInput
+            style={styles.inputText}
+            placeholder="Bạn tìm gì hôm nay?"
+            onChangeText={(value) => setKey(value)}
+          ></TextInput>
         </View>
         {/*  */}
         <View style={styles.cartContainer}>

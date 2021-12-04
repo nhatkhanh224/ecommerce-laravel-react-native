@@ -24,6 +24,7 @@ import Address from "./screens/Address";
 import HomePage from "./screens/HomePage";
 import History from "./screens/History";
 import HistoryDetails from "./screens/HistoryDetails";
+import Search from "./screens/Search";
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
         <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="History" component={History} />
         <Stack.Screen name="HistoryDetails" component={HistoryDetails} />
+        <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>
     </NavigationContainer>
   );
